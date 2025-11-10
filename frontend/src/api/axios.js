@@ -1,22 +1,21 @@
 import axios from 'axios'
 
-// Tạo instance với config mặc định
 const instance = axios.create({
-  baseURL: 'http://localhost:4000/api',  // URL của backend API
+  baseURL: 'http://localhost:4000/api', // backend server URL (change if needed)
   headers: {
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  },
 })
 
-// Tự động gắn JWT token vào header của mọi request
+// attach token from localStorage on each request
 instance.interceptors.request.use((config) => {
   const token = localStorage.getItem('token')
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`
+    config.headers = config.headers || {}
+    config.headers['Authorization'] = `Bearer ${token}`
   }
   return config
 })
-
 
 // optional: handle 401 globally
 instance.interceptors.response.use(

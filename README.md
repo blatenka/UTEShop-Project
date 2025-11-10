@@ -51,3 +51,25 @@ Sau đó cấu hình proxy để Vite chuyển tiếp `/api` tới server giả,
 
 Lưu ý
 - Đây là demo cơ bản. Khi triển khai thực tế, cần bảo mật token và sử dụng refresh token.
+
+
+/fontend
+  /components
+    - Login.jsx         // Form đăng nhập
+    - Register.jsx      // Form đăng ký
+    - Dashboard.jsx     // Trang sau khi đăng nhập
+  /features
+    - authSlice.js      // Redux slice xử lý auth
+  /api
+    - axios.js          // Cấu hình Axios gọi API
+  - App.jsx             // Routes và logic chính
+  - main.jsx           // Entry point
+
+/backend
+  /routes
+    - auth.js          // API đăng nhập/đăng ký
+  /models
+    - User.js          // MongoDB model
+  - server.js          // Express server
+
+
